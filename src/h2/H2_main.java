@@ -1,11 +1,9 @@
 package h2;
 
 public class H2_main {
-    private static int[] cache;
+    private static int[] cache = new int[1000];
 
     public static void main(String[] args) {
-        cache = new int[1000];
-        cache[1] = 1;
         benchmark(10);
     }
 
@@ -15,9 +13,11 @@ public class H2_main {
     }
 
     public static int fibonacciCached(int n) {
-        if (n == 1) return 1;
-        cache[n - 1] = fibonacciCached(n - 1);
-        return cache[n - 2] + cache[n - 1];
+        if (n == 1 || n == 2) return 1;
+        if (cache[n-1] != 0)
+            return cache[n-1];
+        cache[n - 1] = fibonacciCached(n - 1) + fibonacciCached( n - 2);
+        return cache[n - 1];
     }
 
     public static int fibonacciIter(int n) {
@@ -36,15 +36,15 @@ public class H2_main {
         long timeStart, timeFin;
         timeStart = System.nanoTime();
         System.out.println(fibonacci(n));
-        timeFin = timeStart - System.nanoTime();
+        timeFin = System.nanoTime() - timeStart;
         System.out.println("Elapsed nanoseconds (fibonacci()): " + Long.toString(timeFin));
         timeStart = System.nanoTime();
         System.out.println(fibonacciCached(n));
-        timeFin = timeStart - System.nanoTime();
+        timeFin = System.nanoTime() - timeStart;
         System.out.println("Elapsed nanoseconds (fibonacciCached()): " + Long.toString(System.nanoTime() - timeStart));
         timeStart = System.nanoTime();
         System.out.println(fibonacciIter(n));
-        timeFin = timeStart - System.nanoTime();
+        timeFin = System.nanoTime() - timeStart;
         System.out.println("Elapsed nanoseconds (fibonacciIter()): " + Long.toString(System.nanoTime() - timeStart));
     }
 }
