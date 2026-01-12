@@ -4,8 +4,7 @@ import java.util.Arrays;
 
 public class H3_main {
     public static void main(String[] args) {
-        int[] sortThis = new int[]{5, 6, 3, 4, 1, 99, 3, 23};
-        System.out.println(Arrays.toString(mergeSort(sortThis)));
+
     }
 
     public static int[] mergeSort(int[] array) {
