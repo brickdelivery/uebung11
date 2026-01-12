@@ -4,7 +4,7 @@ public class H2_main {
     private static int[] cache = new int[1000];
 
     public static void main(String[] args) {
-        benchmark(10);
+
     }
 
     public static int fibonacci(int n) {
@@ -37,15 +37,15 @@ public class H2_main {
         timeStart = System.nanoTime();
         System.out.println(fibonacci(n));
         timeFin = System.nanoTime() - timeStart;
-        System.out.println("Elapsed nanoseconds (fibonacci()): " + Long.toString(timeFin));
+        System.out.println("Elapsed nanoseconds (fibonacci()): " + timeFin);
         timeStart = System.nanoTime();
         System.out.println(fibonacciCached(n));
         timeFin = System.nanoTime() - timeStart;
-        System.out.println("Elapsed nanoseconds (fibonacciCached()): " + Long.toString(System.nanoTime() - timeStart));
+        System.out.println("Elapsed nanoseconds (fibonacciCached()): " + timeFin);
         timeStart = System.nanoTime();
         System.out.println(fibonacciIter(n));
         timeFin = System.nanoTime() - timeStart;
-        System.out.println("Elapsed nanoseconds (fibonacciIter()): " + Long.toString(System.nanoTime() - timeStart));
+        System.out.println("Elapsed nanoseconds (fibonacciIter()): " + timeFin);
     }
 }
 
